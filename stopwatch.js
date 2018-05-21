@@ -1,5 +1,6 @@
 var interval;
 var time = 0;
+var startStopClicked = false;
 
 setListeners();
 
@@ -10,22 +11,24 @@ function setUpInterval () {
   }, 10);
 }
 
-  function setListeners() {
-    let startStopClicked = false;
-    document.getElementById("startStop").addEventListener("click", function(){
-     if (startStopClicked === false) {
-       setUpInterval();
-       startStopClicked = true;
-     }
-     else {
-       clearInterval(interval);
-       startStopClicked = false;
-     }
-    });
+function setListeners() {
+  document.getElementById("startStop").addEventListener("click", function(){
+    if (startStopClicked === false) {
+      setUpInterval();
+      startStopClicked = true;
+    }
+    else {
+      clearInterval(interval);
+      startStopClicked = false;
+    }
+  });
 
-    document.getElementById("reset").addEventListener("click", function(){
-
-    });
+  document.getElementById("reset").addEventListener("click", function(){
+    clearInterval(interval);
+    startStopClicked = false;
+    time = 0;
+    document.getElementById("time").innerHTML = time;
+  });
 
     document.getElementById("recordTime").addEventListener("click", function(){
       
