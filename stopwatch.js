@@ -1,6 +1,7 @@
 var interval;
 var time = 0;
 var startStopClicked = false;
+var numberOfLogs = 0;
 
 setListeners();
 
@@ -28,9 +29,13 @@ function setListeners() {
     startStopClicked = false;
     time = 0;
     document.getElementById("time").innerHTML = time;
+    document.getElementById("log").innerHTML = "";
   });
 
-    document.getElementById("recordTime").addEventListener("click", function(){
-      
-    });
-  }
+  document.getElementById("recordTime").addEventListener("click", function(){
+    if (time!== 0) {
+      document.getElementById("log").innerHTML += '<div id="log'+numberOfLogs+'">'+Math.round(time * 100) / 100+'</div>';
+      numberOfLogs++;
+    }
+  });
+}
