@@ -9,9 +9,11 @@ setListeners();
 
 function setListeners() {
 
-  document.getElementById("startStop").addEventListener("click", startStop);
-  document.getElementById("reset").addEventListener("click", reset);
-  document.getElementById("recordTime").addEventListener("click", recordTime);
+  document.getElementById("menu").addEventListener("click", function(){
+    let buttonId = event.path[0].id;
+    //call function accordingly to what button is pressed
+    window[buttonId]();
+  });
   document.addEventListener("keypress", keypressSort);
 
 }
@@ -65,10 +67,8 @@ function recordTime() {
 function keypressSort() {
 
   let key = event.key;
-  
   if(key === "s" || key === "S") startStop();
   else if (key === "r" || key === "R") reset();
   else if ( key === "t" || key === "T") recordTime();
-  else return console.log(key);
 
 }
