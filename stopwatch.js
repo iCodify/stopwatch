@@ -1,7 +1,7 @@
 var interval;
 var time = 0;
 var startStopClicked = false;
-var numberOfLogs = 0;
+var numberOfLogs = 1;
 
 
 setListeners();
@@ -48,6 +48,7 @@ function reset() {
   clearInterval(interval);
   startStopClicked = false;
   time = 0;
+  numberOfLogs = 1;
   document.getElementById("time").innerHTML = time;
   document.getElementById("log").innerHTML = "";
 
@@ -55,9 +56,9 @@ function reset() {
 
 
 function recordTime() {
-	console.log(startStopClicked);
+	
   if (time!== 0 && startStopClicked) {
-    document.getElementById("log").innerHTML += '<div id="log'+numberOfLogs+'">'+Math.round(time * 100) / 100+'</div>';
+    document.getElementById("log").innerHTML += '<div id="log'+numberOfLogs+'"><span>'+numberOfLogs+': </span><span>'+Math.round(time * 100) / 100+'</span></div>';
     numberOfLogs++;
   }
 
