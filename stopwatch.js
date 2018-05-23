@@ -55,8 +55,8 @@ function reset() {
 
 
 function recordTime() {
-
-  if (time!== 0) {
+	console.log(startStopClicked);
+  if (time!== 0 && startStopClicked) {
     document.getElementById("log").innerHTML += '<div id="log'+numberOfLogs+'">'+Math.round(time * 100) / 100+'</div>';
     numberOfLogs++;
   }
