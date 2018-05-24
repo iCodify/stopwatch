@@ -58,8 +58,11 @@ function reset() {
 function recordTime() {
 	
   if (time!== 0 && startStopClicked) {
-    document.getElementById("log").innerHTML += '<div id="log'+numberOfLogs+'"><span>'+numberOfLogs+': </span><span>'+Math.round(time * 100) / 100+'</span></div>';
+    document.getElementById("log").innerHTML += '<div id="log'+numberOfLogs+'"><span>'+('0' + numberOfLogs).slice(-2)+': </span><span id="times'+numberOfLogs+'">'+(Math.round(time * 100) / 100).toFixed(2)+'</span></div>';
     numberOfLogs++;
+	if (numberOfLogs>2) {
+		document.getElementById("log"+(numberOfLogs-1)).innerHTML += '<span class="small">+'+(Math.round((document.getElementById("times"+(numberOfLogs-1)).innerHTML-document.getElementById("times"+(numberOfLogs-2)).innerHTML) * 100) / 100).toFixed(2)+'</span>';
+	}
   }
 
 }

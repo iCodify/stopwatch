@@ -1,5 +1,10 @@
 * {
     font-family: Cambria, serif;
     text-align: left;
+	font-size: 15px;
     padding: 5px;
+}
+
+.small {
+	font-size: 10px;
 }
